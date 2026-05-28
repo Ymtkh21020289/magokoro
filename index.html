@@ -292,6 +292,40 @@
             &copy; 2026 NPO Magokoro-Musubi. All Rights Reserved.
         </div>
     </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 検索フォームと入力欄、ボタンを取得
+            const searchForm = document.querySelector('form[action*="search.html"]');
+            if(!searchForm) return;
 
+            const searchInput = searchForm.querySelector('input[name="q"]');
+            const searchBtn = searchForm.querySelector('button[type="submit"]');
+            let emptyCount = 0;
+
+            searchBtn.addEventListener('click', function(e) {
+                // 未入力（スペースのみの場合も含む）の判定
+                if (searchInput.value.trim() === '') {
+                    emptyCount++;
+                    
+                    // 回数に応じてメッセージを変化させる
+                    if (emptyCount === 5) {
+                        searchInput.setCustomValidity("何を探しているんですか？");
+                    } else if (emptyCount === 7) {
+                        searchInput.setCustomValidity("もう誰もいませんよ");
+                    } else if (emptyCount === 10) {
+                        searchInput.setCustomValidity("これ以上、関わらないでください");
+                    } else if (emptyCount < 5) {
+                        // 4回目まではブラウザの標準メッセージ（「このフィールドを入力してください」など）
+                        searchInput.setCustomValidity(""); 
+                    }
+                }
+            });
+
+            // プレイヤーが文字を入力し始めたら、カスタムメッセージをリセットする
+            searchInput.addEventListener('input', function() {
+                searchInput.setCustomValidity("");
+            });
+        });
+    </script>
 </body>
 </html>
