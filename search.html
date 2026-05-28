@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>検索結果 | 特定非営利活動法人 まごころ結び</title>
+    <style>
+        /* index.htmlと同じ基本CSS */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Helvetica Neue", Arial, sans-serif; color: #333; background-color: #fcf9f5; line-height: 1.6; }
+        header { background-color: #ffffff; border-bottom: 3px solid #ff9f43; padding: 15px 20px; }
+        .header-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo h1 { font-size: 24px; color: #e67e22; display: flex; align-items: center; }
+        .logo span { font-size: 12px; display: block; color: #666; font-weight: normal; }
+        nav ul { display: flex; list-style: none; margin-right: 20px; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { text-decoration: none; color: #4a4a4a; font-weight: bold; font-size: 14px; }
+        
+        /* 検索結果用CSS */
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; min-height: 50vh;}
+        h2 { border-bottom: 2px solid #2ecc71; padding-bottom: 10px; margin-bottom: 20px; font-size: 22px;}
+        .search-keyword { color: #e67e22; }
+        
+        .result-item { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .result-title { font-size: 18px; color: #2980b9; text-decoration: none; font-weight: bold; margin-bottom: 5px; display: block;}
+        .result-title:hover { text-decoration: underline; }
+        .result-date { font-size: 12px; color: #999; margin-bottom: 10px; }
+        .result-desc { font-size: 14px; color: #555; }
+        .no-result { text-align: center; color: #666; padding: 40px; }
+
+        footer { background-color: #2d3436; color: #dfe6e9; padding: 30px 20px; font-size: 13px; margin-top: 60px; text-align: center;}
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none;">
+                    <h1><span>特定非営利活動法人</span>まごころ結び</h1>
+                </a>
+            </div>
+            <nav style="display: flex; align-items: center;">
+                <form action="search.html" method="get" style="display: flex;">
+                    <input type="text" name="q" placeholder="サイト内検索..." required 
+                           style="padding: 5px 10px; border: 1px solid #ccc; border-radius: 4px 0 0 4px; outline: none;">
+                    <button type="submit" style="padding: 5px 15px; background-color: #e67e22; color: white; border: none; border-radius: 0 4px 4px 0; cursor: pointer;">検索</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>「<span id="keyword-display" class="search-keyword"></span>」の検索結果</h2>
+        <div id="results-container">
+            </div>
+    </div>
+
+    <footer>
+        &copy; 2026 NPO Magokoro-Musubi. All Rights Reserved.
+    </footer>
+
+    <script>
+        // 1. URLから検索キーワード（q=〇〇）を取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q');
+        
+        // 画面にキーワードを表示
+        if(query) {
+            document.getElementById('keyword-display').textContent = query;
+        } else {
+            document.getElementById('keyword-display').textContent = '未入力';
+        }
+
+        // 2. 記事データベース（配列の形で管理）
+        // ※ ここにダミー記事や、ARGの伏線となる記事を追加していきます。
+        const articles = [
+            {
+                title: "【活動報告】第12回 まごころお茶飲み会を開催しました",
+                date: "2026.05.20",
+                content: "地域のお年寄りの皆様と楽しくお茶を飲みながら、折り紙教室や健康相談を行いました。参加ボランティアの方々、ありがとうございました。",
+                url: "#"
+            },
+            {
+                title: "春の「安心見守り巡回」強化月間のお知らせ",
+                date: "2026.04.15",
+                content: "今年度もボランティアによる夕方の見守り巡回を強化します。地域の皆様のご協力をお願いいたします。",
+                url: "#"
+            },
+            {
+                title: "【重要】事務局の電話番号、および夜間緊急窓口の変更について",
+                date: "2026.03.01",
+                content: "事務局移転に伴い、電話番号が変更となりました。また、緊急対応の窓口も新設いたしましたのでご確認ください。",
+                url: "#"
+            },
+            {
+                title: "ボランティアスタッフ募集のお知らせ",
+                date: "2026.01.10",
+                content: "まごころ結びでは、私たちと一緒に活動してくれるボランティアを随時募集しています。年齢・経験は問いません。",
+                url: "#"
+            },
+            // ↓ ARGギミック：特定のキーワード（例：失踪, トラブル, 旧体制）で検索した時だけ出る隠し記事
+            {
+                title: "【スタッフ専用・非公開】旧B地区でのトラブルに関する対応マニュアル",
+                date: "2025.11.04",
+                content: "以前発生したトラブルについての対応記録です。一般の方には公開しないよう厳重に管理してください。パスワードが必要です。",
+                url: "secret-login.html" // 別の隠しページへのリンク
+            }
+        ];
+
+        // 3. 検索処理と結果の表示
+        const resultsContainer = document.getElementById('results-container');
+        
+        if (query) {
+            // タイトルか本文にキーワードが含まれている記事を抽出 (大文字小文字を区別しない)
+            const lowerQuery = query.toLowerCase();
+            const filteredArticles = articles.filter(article => 
+                article.title.toLowerCase().includes(lowerQuery) || 
+                article.content.toLowerCase().includes(lowerQuery)
+            );
+
+            if (filteredArticles.length > 0) {
+                // 結果がある場合、HTMLを生成して表示
+                filteredArticles.forEach(article => {
+                    const articleHTML = `
+                        <div class="result-item">
+                            <a href="${article.url}" class="result-title">${article.title}</a>
+                            <div class="result-date">${article.date}</div>
+                            <div class="result-desc">${article.content}</div>
+                        </div>
+                    `;
+                    resultsContainer.innerHTML += articleHTML;
+                });
+            } else {
+                // 結果がない場合
+                resultsContainer.innerHTML = `<div class="no-result">一致する記事は見つかりませんでした。<br>別のキーワードをお試しください。</div>`;
+            }
+        } else {
+            resultsContainer.innerHTML = `<div class="no-result">検索キーワードが入力されていません。</div>`;
+        }
+    </script>
+</body>
+</html>
