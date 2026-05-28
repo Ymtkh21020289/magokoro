@@ -309,11 +309,11 @@
                     
                     // 回数に応じてメッセージを変化させる
                     if (emptyCount === 5) {
-                        searchInput.setCustomValidity("何を探しているんですか？");
+                        searchInput.setCustomValidity("この施設は何かがおかしい");
                     } else if (emptyCount === 7) {
-                        searchInput.setCustomValidity("もう誰もいませんよ");
+                        searchInput.setCustomValidity("この施設に関わったら最後、");
                     } else if (emptyCount === 10) {
-                        searchInput.setCustomValidity("これ以上、関わらないでください");
+                        searchInput.setCustomValidity("誰も生きて帰ってこられない");
                     } else if (emptyCount < 5) {
                         // 4回目まではブラウザの標準メッセージ（「このフィールドを入力してください」など）
                         searchInput.setCustomValidity(""); 
