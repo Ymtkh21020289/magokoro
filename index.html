@@ -205,19 +205,27 @@
     </style>
 </head>
 <body>
-
     <header>
         <div class="header-container">
             <div class="logo">
-                <h1><span>特定非営利活動法人</span>まごころ結び</h1>
+                <a href="index.html" style="text-decoration: none;">
+                    <h1><span>特定非営利活動法人</span>まごころ結び</h1>
+                </a>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#about">法人概要</a></li>
-                    <li><a href="#activity">活動内容</a></li>
-                    <li><a href="#news">お知らせ</a></li>
-                    <li><a href="#contact">お問い合わせ</a></li>
+            <nav style="display: flex; align-items: center; flex-wrap: wrap;">
+                <ul style="display: flex; list-style: none; margin-right: 20px;">
+                    <li><a href="index.html#about">法人概要</a></li>
+                    <li><a href="index.html#activity">活動内容</a></li>
+                    <li><a href="index.html#news">お知らせ</a></li>
                 </ul>
+                <form action="search.html" method="get" style="display: flex;">
+                    <input type="text" name="q" placeholder="サイト内検索..." required 
+                           style="padding: 5px 10px; border: 1px solid #ccc; border-radius: 4px 0 0 4px; outline: none;">
+                    <button type="submit" 
+                            style="padding: 5px 15px; background-color: #e67e22; color: white; border: none; border-radius: 0 4px 4px 0; cursor: pointer;">
+                        検索
+                    </button>
+                </form>
             </nav>
         </div>
     </header>
