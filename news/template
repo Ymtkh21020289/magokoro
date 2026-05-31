@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【記事タイトル】 | 特定非営利活動法人 まごころ結び</title>
+    <style>
+        /* 基本設定 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: "Helvetica Neue", Arial, sans-serif; color: #333; background-color: #fcf9f5; line-height: 1.6; }
+        
+        header { background-color: #ffffff; border-bottom: 3px solid #ff9f43; padding: 15px 20px; }
+        .header-container { max-width: 1000px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo h1 { font-size: 24px; color: #e67e22; display: flex; align-items: center; }
+        .logo span { font-size: 12px; display: block; color: #666; font-weight: normal; }
+        nav ul { display: flex; list-style: none; margin-right: 20px; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { text-decoration: none; color: #4a4a4a; font-weight: bold; font-size: 14px; }
+        
+        /* パンくずリスト */
+        .breadcrumb { max-width: 1000px; margin: 15px auto 0; padding: 0 20px; font-size: 13px; color: #666; }
+        .breadcrumb a { color: #e67e22; text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+
+        /* コンテンツエリア */
+        .container { max-width: 1000px; margin: 20px auto 40px; padding: 0 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px; }
+        @media (max-width: 768px) { .container { grid-template-columns: 1fr; } }
+
+        /* 記事本文エリア */
+        .article-box { background: #fff; padding: 30px; border-radius: 8px; border: 1px solid #eee; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .article-header { border-bottom: 2px solid #2ecc71; margin-bottom: 20px; padding-bottom: 15px; }
+        .article-date { font-size: 14px; color: #e67e22; font-weight: bold; margin-bottom: 5px; display: inline-block; }
+        .article-category { background: #eee; padding: 2px 8px; border-radius: 3px; font-size: 12px; margin-left: 10px; color: #555; }
+        .article-title { font-size: 24px; color: #333; line-height: 1.4; }
+        
+        .article-content { font-size: 15px; color: #444; line-height: 1.8; }
+        .article-content h4 { margin: 25px 0 10px; padding-left: 10px; border-left: 4px solid #ff9f43; font-size: 18px; }
+        .article-content p { margin-bottom: 15px; }
+        .article-content img { max-width: 100%; height: auto; border-radius: 4px; margin: 15px 0; border: 1px solid #ddd; }
+
+        .back-btn { display: inline-block; margin-top: 30px; padding: 10px 20px; background: #ecf0f1; color: #333; text-decoration: none; border-radius: 5px; font-size: 14px; transition: background 0.3s; }
+        .back-btn:hover { background: #bdc3c7; }
+
+        /* サイドバー */
+        aside h3 { font-size: 18px; color: #e67e22; border-bottom: 2px solid #e67e22; padding-bottom: 5px; margin-bottom: 15px; }
+        .banner { display: block; background: #55efc4; color: #2d3436; text-align: center; padding: 15px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .banner.orange { background: #ffbe76; }
+
+        /* フッター */
+        footer { background-color: #2d3436; color: #dfe6e9; padding: 30px 20px; font-size: 13px; margin-top: 60px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="/magokoro/index.html" style="text-decoration: none;">
+                    <h1><span>特定非営利活動法人</span>まごころ結び</h1>
+                </a>
+            </div>
+            <nav style="display: flex; align-items: center; flex-wrap: wrap;">
+                <ul style="display: flex; list-style: none; margin-right: 20px;">
+                    <li><a href="/magokoro/index.html#about">法人概要</a></li>
+                    <li><a href="/magokoro/index.html#activity">活動内容</a></li>
+                    <li><a href="/magokoro/index.html#news">お知らせ</a></li>
+                </ul>
+                <form action="/magokoro/search.html" method="get" style="display: flex;">
+                    <input type="text" name="q" placeholder="サイト内検索..." required 
+                           style="padding: 5px 10px; border: 1px solid #ccc; border-radius: 4px 0 0 4px; outline: none;">
+                    <button type="submit" style="padding: 5px 15px; background-color: #e67e22; color: white; border: none; border-radius: 0 4px 4px 0; cursor: pointer;">検索</button>
+                </form>
+            </nav>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="/magokoro/index.html">ホーム</a> &gt; <a href="/magokoro/index.html#news">お知らせ</a> &gt; 記事タイトル
+    </div>
+
+    <div class="container">
+        
+        <main>
+            <article class="article-box">
+                <header class="article-header">
+                    <span class="article-date">2026.XX.XX</span>
+                    <span class="article-category">活動報告 / 重要</span>
+                    <h2 class="article-title">ここに記事のタイトルが入ります</h2>
+                </header>
+
+                <div class="article-content">
+                    <p>ここに記事の本文を記述します。段落ごとに <code>&lt;p&gt;</code> タグで囲むと読みやすくなります。</p>
+                    
+                    <h4>見出しが必要な場合</h4>
+                    <p>報告事項や詳細な条件などを書くときは、見出しを使うとそれらしくなります。ダミーテキストをいくつか入れて、実際のNPO法人の活動記録のように見せかけましょう。</p>
+                    
+                    <p>地域の皆様の温かいご支援により、今月の活動も無事に終えることができました。引き続き「まごころ結び」をよろしくお願いいたします。</p>
+
+                    <p style="color: #fff; font-size: 10px; user-select: none;">誰も助けてくれない</p>
+                </div>
+
+                <a href="/magokoro/index.html#news" class="back-btn">お知らせ一覧に戻る</a>
+            </article>
+        </main>
+
+        <aside>
+            <h3>参加する・支援する</h3>
+            <a href="#" class="banner">ボランティア募集中！</a>
+            <a href="#" class="banner orange">ご寄付・ご支援について</a>
+
+            <div style="background: #fff; padding: 15px; border-radius: 5px; border: 1px solid #ddd; margin-top: 20px; font-size: 13px;">
+                <h4 style="color:#e67e22; margin-bottom: 5px;">【事務局からのお願い】</h4>
+                <p>最近、当法人を騙った不審な訪問型詐欺の報告が入っております。当法人のスタッフは必ず「顔写真付きの身分証」を携帯しておりますので、不審に思われた際は事務局までご連絡ください。</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        &copy; 2026 NPO Magokoro-Musubi. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
